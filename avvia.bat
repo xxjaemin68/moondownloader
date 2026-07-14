@@ -7,6 +7,9 @@ py --version >nul 2>&1 && set "PY=py"
 if not defined PY (python --version >nul 2>&1 && set "PY=python")
 if not defined PY (python3 --version >nul 2>&1 && set "PY=python3")
 if not defined PY (
+    echo [ERROR] Python not found. Please install Python 3.10+ from https://www.python.org
+    echo         Make sure to check "Add Python to PATH" during installation.
+    echo.
     echo [ERRORE] Python non trovato. Installa Python 3.10+ da https://www.python.org
     echo          Assicurati di spuntare "Add Python to PATH" durante l'installazione.
     pause
