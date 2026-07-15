@@ -4,16 +4,22 @@ updates:
   - package-ecosystem: pip
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
       day: monday
       time: "09:00"
       timezone: Europe/Rome
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
     labels:
       - dependencies
     commit-message:
       prefix: "chore(deps)"
       include: scope
+    ignore:
+      # pillow is optional (tkinter logo scaling only). Major bumps drop
+      # deprecated APIs like Image.LANCZOS; stay on minor/patch until we
+      # refactor to the new Image.Resampling constants.
+      - dependency-name: "pillow"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions workflows
   - package-ecosystem: github-actions
